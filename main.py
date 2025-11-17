@@ -12,7 +12,7 @@ from optimizers import make_optimizer
 from augmentations import make_augmentation
 from datasets import make_dataset
 from dataloaders import make_dataloader
-from train import train
+from train import train, eval, scheduler_setup
 
 
 
@@ -85,6 +85,12 @@ def main(cfg):
     # ===========================================
     for taskid in range(cfg.continual.num_task):
 
+        # エポック数の決定
+        if taskid == 0:
+            cfg.optimizer.train.epoch = cfg.optimizer.train.base_epoch
+        else:
+            cfg.optimizer.train.epoch = cfg.optimizer.train.add_epoch
+
         # task id の更新
         cfg.continual.target_task = taskid
 
@@ -100,12 +106,22 @@ def main(cfg):
         # データローダの作成
         train_loader, val_loader = make_dataloader(cfg, train_dataset, val_dataset)
 
-        # 学習の実行
+        # schedulerの設定
+        scheduler_setup(cfg, model, optimizer)
+
+        # 学習と評価の実行
+        best_acc = 0.0
         for epoch in range(1, cfg.optimizer.train.epoch+1):
 
+            # 訓練
             train(cfg=cfg, model=model, model2=model2, criterions=criterions, optimizer=optimizer, train_loader=train_loader, epoch=epoch)
 
+            # 評価
+            top1, task_il = eval(cfg=cfg, model=model, model2=model2, criterions=criterions, optimizer=optimizer, val_loader=val_loader, epoch=epoch)
 
+            # 最高精度を更新したらモデルを保存
+            if top1 > best_acc:
+                print("model save")
 
 if __name__ == "__main__":
 

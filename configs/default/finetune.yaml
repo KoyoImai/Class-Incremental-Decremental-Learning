@@ -47,7 +47,19 @@ optimizer:
     momentum: 0.9
     weight_decay: 5e-4
     batch_size: 128
-    epoch: 100
+    epoch: 
+    base_epoch: 20
+    add_epoch: 20
+
+
+scheduler:
+  type: "cosine"
+  lr_decay_rate: 0.01
+  warmup: True
+  warmup_epochs: 10
+  warmup_from: 0.001
+  warmup_to: 
+
 
 
 seed: 0

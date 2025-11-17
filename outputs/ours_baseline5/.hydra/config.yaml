@@ -31,7 +31,16 @@ optimizer:
     momentum: 0.9
     weight_decay: 0.0005
     batch_size: 128
-    epoch: 100
+    epoch: null
+    base_epoch: 20
+    add_epoch: 20
+scheduler:
+  type: cosine
+  lr_decay_rate: 0.01
+  warmup: true
+  warmup_epochs: 10
+  warmup_from: 0.001
+  warmup_to: null
 seed: 0
 num_workers: 8
 date: 20251116
