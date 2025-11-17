@@ -41,7 +41,25 @@ def seed_everything(seed):
 
 
 
-
+# モデルの保存
+def save_model(model, optimizer, opt, epoch, save_file):
+    print('==> Saving...'+save_file)
+    if opt.method in ["cclis-pcgrad"]:
+        state = {
+        'opt': opt,
+        'model': model.state_dict(),
+        'optimizer': optimizer._optim.state_dict(),
+        'epoch': epoch,
+    }
+    else:
+        state = {
+            'opt': opt,
+            'model': model.state_dict(),
+            'optimizer': optimizer.state_dict(),
+            'epoch': epoch,
+        }
+    torch.save(state, save_file)
+    del state
 
 
 

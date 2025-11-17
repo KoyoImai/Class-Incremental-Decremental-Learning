@@ -11,19 +11,24 @@ log:
   mem_path: null
   result_path: null
 dataset:
-  type: cifar10
+  type: cifar100
   size: 32
-  num_class: 10
+  num_class: 100
   data_folder: /home/kouyou/datasets/
 continual:
-  num_task: 5
-  cls_per_task: 2
+  num_task: 10
+  cls_per_task: 10
   output_size:
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
   target_task: null
 optimizer:
   train:
@@ -32,8 +37,8 @@ optimizer:
     weight_decay: 0.0005
     batch_size: 128
     epoch: null
-    base_epoch: 20
-    add_epoch: 20
+    base_epoch: 50
+    add_epoch: 50
 scheduler:
   type: cosine
   lr_decay_rate: 0.01

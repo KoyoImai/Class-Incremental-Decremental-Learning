@@ -21,9 +21,14 @@ SSOCL/
 
 # 実行方法
 学習・評価の実行方法は以下の通りです．
-- Finetune \
-    Finetuneは，忘却への対処やUnlearning的なアプローチを行わない通常の学習です．
+- Finetune: \
+    忘却への対処やUnlearning的なアプローチを行わない通常の学習です．
     ```
-    python main.py --config-path ./configs/default/ --config-name default_finetune
+    python main.py --config-path ./configs/default/ --config-name finetune
     ```
 
+- LSF ([paper](https://www.ijcai.org/proceedings/2021/0137.pdf)):\
+    従来手法LSFによる学習です．
+    ```
+    python main.py --config-path ./configs/default/ --config-name lsf
+    ```

@@ -5,7 +5,7 @@ import copy
 
 
 
-from utils import seed_everything
+from utils import seed_everything, save_model
 from models import make_model
 from losses import make_criterion
 from optimizers import make_optimizer
@@ -52,7 +52,11 @@ def main(cfg):
     # logの名前を決定
     cfg.log.name = f"{cfg.log.base}_{cfg.method.name}_{cfg.dataset.type}_seed{cfg.seed}_date{cfg.date}"
 
-    print(cfg)
+
+    # ===========================================
+    # データローダ作成やディレクトリ作成などの前処理
+    # ===========================================
+    preparation(cfg)
 
 
     # ===========================================
@@ -122,6 +126,15 @@ def main(cfg):
             # 最高精度を更新したらモデルを保存
             if top1 > best_acc:
                 print("model save")
+                dir_path = f"{cfg.log.model_path}/task{cfg.continual.target_task:02d}"
+                file_path = f"{dir_path}/model_epoch{epoch:03d}.pth"
+                if not os.path.exists(dir_path):
+                    os.makedirs(dir_path)
+                save_model(model, optimizer, cfg, cfg.optimizer.train.epoch, file_path)
+
+                best_acc = top1
+
+
 
 if __name__ == "__main__":
 

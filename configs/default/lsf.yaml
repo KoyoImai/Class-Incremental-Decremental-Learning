@@ -7,7 +7,7 @@ hydra:
 
 # 手法独自のハイパラ
 method:
-  name: finetune
+  name: lsf
 
 
 
@@ -27,16 +27,16 @@ log:
 
 # データセット関連
 dataset:
-  type: "cifar100"
+  type: "cifar10"
   size: 32
-  num_class: 100
+  num_class: 10
   data_folder: '/home/kouyou/datasets/'
 
 # 継続学習の問題設定関連
 continual:
-  num_task: 10
-  cls_per_task: 10
-  output_size: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+  num_task: 5
+  cls_per_task: 2
+  output_size: [2, 2, 2, 2, 2]
   target_task: 
 
 
@@ -48,8 +48,8 @@ optimizer:
     weight_decay: 5e-4
     batch_size: 128
     epoch: 
-    base_epoch: 50
-    add_epoch: 50
+    base_epoch: 20
+    add_epoch: 20
 
 
 scheduler:
