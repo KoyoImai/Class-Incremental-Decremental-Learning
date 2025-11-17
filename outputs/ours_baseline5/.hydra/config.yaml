@@ -1,0 +1,37 @@
+method:
+  name: finetune
+log:
+  name: null
+  base: baseline
+  model: model
+  result: result
+  base_path: null
+  model_path: null
+  explog_path: null
+  mem_path: null
+  result_path: null
+dataset:
+  type: cifar10
+  size: 32
+  num_class: 10
+  data_folder: /home/kouyou/datasets/
+continual:
+  num_task: 5
+  cls_per_task: 2
+  output_size:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  target_task: null
+optimizer:
+  train:
+    learning_rate: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+    batch_size: 128
+    epoch: 100
+seed: 0
+num_workers: 8
+date: 20251116
