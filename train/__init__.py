@@ -9,7 +9,10 @@ def train(cfg, model, model2, criterions, optimizer, train_loader, epoch):
 
     adjust_learning_rate(cfg, optimizer, epoch)
 
-    train_finetune(cfg, model, model2, criterions, optimizer, train_loader, epoch)
+    if cfg.method.name == "finetune":
+        train_finetune(cfg, model, model2, criterions, optimizer, train_loader, epoch)
+    elif cfg.method.name == "lsf":
+        train_lsf(cfg, model, model2, criterions, optimizer, train_loader, epoch)
 
     return 
 
