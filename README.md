@@ -30,6 +30,7 @@ SSOCL/
 - LSF ([paper](https://www.ijcai.org/proceedings/2021/0137.pdf)):\
     従来手法LSFによる学習です．
     ```
+    python gen_mnemonic.py --config-path ./configs/default/ --config-name lsf
     python main.py --config-path ./configs/default/ --config-name lsf
     ```
 
