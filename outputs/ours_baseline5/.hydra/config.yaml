@@ -1,5 +1,5 @@
 method:
-  name: finetune
+  name: lsf
 log:
   name: null
   base: baseline
@@ -37,8 +37,8 @@ optimizer:
     weight_decay: 0.0005
     batch_size: 128
     epoch: null
-    base_epoch: 50
-    add_epoch: 50
+    base_epoch: 20
+    add_epoch: 20
 scheduler:
   type: cosine
   lr_decay_rate: 0.01

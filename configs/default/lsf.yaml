@@ -27,16 +27,16 @@ log:
 
 # データセット関連
 dataset:
-  type: "cifar10"
+  type: "cifar100"
   size: 32
-  num_class: 10
+  num_class: 100
   data_folder: '/home/kouyou/datasets/'
 
 # 継続学習の問題設定関連
 continual:
-  num_task: 5
-  cls_per_task: 2
-  output_size: [2, 2, 2, 2, 2]
+  num_task: 10
+  cls_per_task: 10
+  output_size: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
   target_task: 
 
 

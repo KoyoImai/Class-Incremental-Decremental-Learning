@@ -13,7 +13,7 @@ SSOCL/
 ├── optimizers        : Optimizer関連を実装したモジュール群．
 ├── train             : 訓練・評価を実際に行うモジュール群．
 ├── main.py           : データストリームによる事前学習を実行するmainファイル．
-├── 
+├── gen_mnemonic.py   : LSFのニーモニックコードを作成するためのプログラム（他の用途は特になし）．
 ├── 
 └── utils.py          : その他のモジュールを実装するutilsファイル．
 ```
@@ -32,3 +32,5 @@ SSOCL/
     ```
     python main.py --config-path ./configs/default/ --config-name lsf
     ```
+
+- ContrastiveStrategy ([paper](https://arxiv.org/pdf/2405.18663)):\

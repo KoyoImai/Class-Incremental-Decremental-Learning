@@ -113,12 +113,12 @@ hydra:
     - hydra.mode=RUN
     task: []
   job:
-    name: main
+    name: gen_mnemonic
     chdir: null
     override_dirname: ''
     id: ???
     num: ???
-    config_name: finetune
+    config_name: lsf
     env_set: {}
     env_copy: []
     config:
