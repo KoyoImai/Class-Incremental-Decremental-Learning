@@ -34,4 +34,11 @@ SSOCL/
     python main.py --config-path ./configs/default/ --config-name lsf
     ```
 
+- FCS ([paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Li_FCS_Feature_Calibration_and_Separation_for_Non-Exemplar_Class_Incremental_Learning_CVPR_2024_paper.pdf)):\
+    従来手法FCSによる学習です．
+    ```
+    python main.py --config-path ./configs/default/ --config-name fcs
+    ```
+
 - ContrastiveStrategy ([paper](https://arxiv.org/pdf/2405.18663)):\
+    従来手法ContrastiveStrategyによる学習です．

@@ -2,12 +2,12 @@
 # configファイルの保存先なので忘れず変更する
 hydra:
   run:
-    dir: outputs/ours_baseline5
+    dir: outputs/fcs
 
 
 # 手法独自のハイパラ
 method:
-  name: lsf
+  name: fcs
 
 
 
