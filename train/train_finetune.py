@@ -58,14 +58,15 @@ def train_finetune(cfg, model, model2, criterions, optimizer, train_loader, epoc
 
 
         # 正解率の計算
-        cls_list = np.unique(labels.cpu())
-        correct_all = (y_pred.argmax(1) == labels)
+        with torch.no_grad():
+            cls_list = np.unique(labels.cpu())
+            correct_all = (y_pred.argmax(1) == labels)
 
 
-        for c in cls_list:
-            mask = labels == c
-            corr[c] += correct_all[mask].float().sum().item()
-            cnt[c] += mask.float().sum().item()
+            for c in cls_list:
+                mask = labels == c
+                corr[c] += correct_all[mask].float().sum().item()
+                cnt[c] += mask.float().sum().item()
 
         # 現在の学習率
         current_lr = optimizer.param_groups[0]['lr']
