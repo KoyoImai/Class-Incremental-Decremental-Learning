@@ -113,7 +113,7 @@ hydra:
     - hydra.mode=RUN
     task: []
   job:
-    name: gen_mnemonic
+    name: main
     chdir: null
     override_dirname: ''
     id: ???

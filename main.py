@@ -131,8 +131,9 @@ def main(cfg):
                 if not os.path.exists(dir_path):
                     os.makedirs(dir_path)
                 save_model(model, optimizer, cfg, cfg.optimizer.train.epoch, file_path)
-
                 best_acc = top1
+            
+            print("\n \n")
 
 
 
