@@ -8,6 +8,12 @@ hydra:
 # 手法独自のハイパラ
 method:
   name: fcs
+  lambda_fkd: 10.0
+  lambda_proto: 10.0
+  lambda_transfer: 1.0
+  lambda_contrast: 0.1
+  temp_proto: 0.1
+  temp_contrast: 0.07
 
 
 

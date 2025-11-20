@@ -2,6 +2,7 @@
 
 from train.train_finetune import train_finetune, eval_finetune
 from train.train_lsf import train_lsf
+from train.train_fcs import train_fcs
 
 from train.scheduler import scheduler_setup, adjust_learning_rate
 from train.utils import get_forget_classes
@@ -21,6 +22,9 @@ def train(cfg, model, model2, criterions, optimizer, train_loader, epoch):
         train_finetune(cfg, model, model2, criterions, optimizer, train_loader, epoch)
     elif cfg.method.name == "lsf":
         train_lsf(cfg, model, model2, criterions, optimizer, train_loader, epoch, forget_class)
+    elif cfg.method.name == "fcs":
+        train_fcs(cfg, model, model2, criterions, optimizer, train_loader, epoch, forget_class)
+
 
 
 

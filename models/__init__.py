@@ -18,7 +18,12 @@ def make_model(cfg):
         from models.resnet_cifar_lsf import BackboneResNet
         model = BackboneResNet(name="resnet18", head="linear", cfg=cfg)
         model2 = BackboneResNet(name="resnet18", head="linear", cfg=cfg)
-    
+
+    elif cfg.method.name in ["fcs"]:
+        from models.resnet_cifar_fcs import BackboneResNet
+        model = BackboneResNet(name="resnet18", head="linear", cfg=cfg)
+        model2 = BackboneResNet(name="resnet18", head="linear", cfg=cfg)
+
     else:
         assert False
     
@@ -27,6 +32,7 @@ def make_model(cfg):
 
     if torch.cuda.is_available():
         model = model.cuda()
+        model2 = model2.cuda()
 
 
     return model, model2

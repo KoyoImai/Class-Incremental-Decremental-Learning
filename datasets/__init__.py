@@ -18,10 +18,14 @@ def make_dataset(cfg, train_aug, val_aug):
     if dataset_type == "cifar10":
         train_dataset = SplitCifar10(cfg=cfg, augmentation=train_aug, train=True)
         val_dataset = SplitCifar10(cfg=cfg, augmentation=val_aug, train=False)
+    
     elif dataset_type == "cifar100":
-        train_dataset = SplitCifar100(cfg=cfg, augmentation=train_aug, train=True)
-        val_dataset = SplitCifar100(cfg=cfg, augmentation=val_aug, train=False)
-
+        if not cfg.method.name in ["fcs"]:
+            train_dataset = SplitCifar100(cfg=cfg, augmentation=train_aug, train=True)
+            val_dataset = SplitCifar100(cfg=cfg, augmentation=val_aug, train=False)
+        else:
+            train_dataset = SplitCifar100FCS(cfg=cfg, augmentation=train_aug, train=True)
+            val_dataset = SplitCifar100(cfg=cfg, augmentation=val_aug, train=False)
     else:
         assert False
     
